@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        h1 {
+            text-align: center;
+        }
+        
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        a {
+            margin-left: 10px;
+            color: blue;
+            text-decoration: none;
+        }
+       
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Task Manager</h1>
+        <a href="{% url 'add_task' %}">Add New Task</a>
+
+        <ul>
+            {% for task in tasks %}
+            <li>
+                {{ task.title }} - 
+                {% if task.completed %}
+                    <span style="color:green;">Completed</span>
+                {% else %}
+                    <a href="{% url 'complete_task' task.id %}">Complete</a>
+                {% endif %}
+                <a href="{% url 'delete_task' task.id %}" style="color:red;">Delete</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Task</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        h1 {
+            text-align: center;
+        }
+        
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        a {
+            
+            color: blue;
+            text-decoration: none;
+        }
+        #input{
+            margin: auto;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Add a New Task</h1>
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" id="input" name="title" placeholder="Enter task title" required>
+            <button type="submit">Add Task</button>
+        </form>
+        <a href="{% url 'task_list' %}" style="margin-top:40px;">Back to Task List</a>
+    </div>
+</body>
+</html>
